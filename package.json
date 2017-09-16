@@ -1,0 +1,25 @@
+{
+  "name": "code-blocks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {},
+  "dependencies": {
+    "fs-extra": "^4.0.2",
+    "parse-pairs": "^0.2.2",
+    "remark": "^8.0.0",
+    "unist-util-find-before": "^2.0.1",
+    "unist-util-parents": "^1.0.0",
+    "unist-util-select": "^1.5.0"
+  },
+  "devDependencies": {
+    "ava": "^0.22.0"
+  },
+  "scripts": {
+    "test": "ava --verbose test/*.js",
+    "watch": "ava --verbose --watch test/*.js"
+  },
+  "keywords": [],
+  "author": "Shawn Allen <https://github.com/shawnbot>",
+  "license": "ISC"
+}
