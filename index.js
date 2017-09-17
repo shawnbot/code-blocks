@@ -4,45 +4,47 @@ const remark = require('remark')
 const parents = require('unist-util-parents')
 const select = require('unist-util-select')
 const parsePairs = require('parse-pairs').default
-const getPreviousNodeValue = require('./lib/getPreviousNodeValue')
 
-const fromAST = (ast, opts) => {
-  // assign node.parent references if they haven't been set
-  if (!ast.children[0].parent) {
-    ast = parents(ast)
-  }
-  return select(ast, 'code[lang]').map(node => {
-    transformNode(node)
+const getPreviousNodeValue = require('./lib/getPreviousNodeValue')
+const getDefaultTitle = require('./lib/getDefaultTitle')
+
+const fromAST = (ast, opts, file) => {
+  ast = parents(ast)
+  return select(ast, 'code[lang]').map((node, index) => {
+    transformNode(node, index, file)
+
     return node
   })
 }
 
-const transformNode = node => {
+const transformNode = (node, index, file) => {
   var lang = node.lang
-  var meta = {}
+  var info = {}
   if (lang.indexOf(' ') > -1) {
     node.lang = lang.split(' ').shift()
     // grab everything after the lang and the trailing space
     var pairs = lang.substr(node.lang.length + 1)
-    meta = parsePairs(pairs)
+    info = parsePairs(pairs)
   }
-  node.meta = meta
-  node.title = meta.title || getPreviousNodeValue(node, 'heading')
+  node.info = info
+  node.title = info.title
+    || getPreviousNodeValue(node, 'heading')
+    || getDefaultTitle(node, index, file)
 }
 
-const fromString = (string, opts) => {
+const fromString = (string, opts, file) => {
   var ast = remark.parse(string)
-  return fromAST(ast, opts)
+  return fromAST(ast, opts, file)
 }
 
-const fromFile = (filename, opts) => {
-  return fse.readFile(filename, "utf8")
-    .then(str => fromString(str, opts))
+const fromFile = (file, opts) => {
+  return fse.readFile(file, "utf8")
+    .then(str => fromString(str, opts, file))
 }
 
-const fromFileSync = (filename, opts) => {
-  const str = fs.readFileSync(filename, "utf8")
-  return fromString(str)
+const fromFileSync = (file, opts) => {
+  const str = fs.readFileSync(file, "utf8")
+  return fromString(str, file)
 }
 
 module.exports = {
