@@ -1,9 +1,8 @@
 {
   "name": "code-blocks",
   "version": "0.0.1",
-  "description": "",
+  "description": "Parse fenced code blocks from markdown with useful metadata",
   "main": "index.js",
-  "engines": {},
   "dependencies": {
     "fs-extra": "^4.0.2",
     "parse-pairs": "^0.2.2",
@@ -19,7 +18,11 @@
     "test": "ava --verbose test/*.js",
     "watch": "ava --verbose --watch test/*.js"
   },
-  "keywords": [],
+  "keywords": [
+    "code",
+    "blocks",
+    "markdown"
+  ],
   "author": "Shawn Allen <https://github.com/shawnbot>",
   "license": "ISC"
 }
