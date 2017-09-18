@@ -12,13 +12,12 @@ const fromAST = (ast, opts, file) => {
   ast = parents(ast)
   return select(ast, 'code[lang]').map((node, index) => {
     transformNode(node, index, file)
-
     return node
   })
 }
 
 const transformNode = (node, index, file) => {
-  var lang = node.lang
+  var lang = node.lang || ''
   var info = {}
   if (lang.indexOf(' ') > -1) {
     node.lang = lang.split(' ').shift()
