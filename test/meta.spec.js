@@ -3,7 +3,7 @@ const path = require('path')
 const test = require('ava')
 const vm = require('vm')
 
-const tests = ['../README.md', 'meta.spec.md']
+const tests = ['../README.md', '../api.md', 'meta.spec.md']
   .reduce((tests, file) => {
     return tests.concat(
       blocks.fromFileSync(path.join(__dirname, file))
