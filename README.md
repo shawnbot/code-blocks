@@ -25,20 +25,14 @@ See the [API documentation](api.md) for more examples.
 
 ## How it works
 
-This library uses [remark] to parse Markdown into a [unist] tree, then finds
-all of the `code` nodes in the tree with a `lang` property; that is, [fenced
-code blocks] with a language identifier after the opening <code>```</code> or
-<code>~~~</code>, such as:
-
-~~~
-```html
-<h1>Hello, world!</h1>
-```
-~~~
+This library uses [remark] to parse Markdown into a [unist] tree,
+then finds all of the [fenced code blocks]. Those with a language
+identifier after the opening <code>```</code> or <code>~~~</code>
+get some [additional properties](#node-properties).
 
 ### Code block info
 
-The [CommonMark Spec][fenced code blocks] states that:
+According to the [CommonMark Spec][fenced code blocks]:
 
 > The first word of the info string is typically used to specify the language
 > of the code sample, and rendered in the class attribute of the code tag.
@@ -55,8 +49,33 @@ pairs, which are parsed as each code block's `info`, as in:
 ```
 ~~~
 
+When parsed with code-blocks, this would yield an array with one object:
+
+```js
+[{
+  type: 'code',
+  lang: 'html',
+  value: '<h1>Hello, world!</h1>',
+  info: {
+    title: 'A dumb example',
+    foo: 'bar',
+    'x.y.z': '1 2 3'
+  },
+  title: 'A dumb example',
+  source: {
+    file: 'README.md',
+    line: 1
+  },
+  position: {
+    // see https://github.com/syntax-tree/unist#position
+  }
+}]
+```
+
+### Node properties
+
 The [unist] node objects returned by all of the block parsing
-functions are "enhanced" with the following keys:
+functions are "enhanced" with the following properties:
 
 * `lang` contains only the first "word" of the info string
 * `info` is an object of key/value pairs parsed from the remainder of the info
