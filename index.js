@@ -27,6 +27,10 @@ const transformNode = (node, index, file) => {
     info = parsePairs(pairs)
   }
   node.info = info
+  node.source = {
+    file: file || 'buffer',
+    line: node.position.start.line,
+  }
   node.title = info.title
     || getPreviousNodeValue(node, 'heading')
     || getDefaultTitle(node, index, file)
@@ -44,7 +48,7 @@ const fromFile = (file, opts) => {
 
 const fromFileSync = (file, opts) => {
   const str = fs.readFileSync(file, "utf8")
-  return fromString(str, file)
+  return fromString(str, opts, file)
 }
 
 module.exports = {
