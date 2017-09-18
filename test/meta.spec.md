@@ -20,9 +20,11 @@ context variables:
     happens, which is that we create a [vm.Script] instance and
     run it with a [sandboxed context].
 
-## Skipping blocks
+## Which blocks are tested?
 
-Any code block with `skip=true` will be skipped, as in:
+Any code block with `js` as the language and the presence of the
+string `test` in its code will be run, _except_ those with
+`skip=true`, e.g.:
 
 ~~~markdown
 ```js skip=true
@@ -41,7 +43,7 @@ to `test.pass()`.
 to match that of the <code>```js</code>:
 
 ```js
-test.is(block.source.line, 43)
+test.is(block.source.line, 45)
 test.is(block.source.file, __dirname + '/meta.spec.md')
 ```
 

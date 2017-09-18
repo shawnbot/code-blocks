@@ -11,7 +11,7 @@ const tests = ['../README.md', 'meta.spec.md']
   }, [])
   .filter(block => (
     block.lang === 'js' &&
-    !block.info.skip &&
+    block.info.skip !== 'true' &&
     block.value.indexOf('test') > -1
   ))
   .map(block => {
