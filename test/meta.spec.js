@@ -3,9 +3,16 @@ const path = require('path')
 const test = require('ava')
 const vm = require('vm')
 
-blocks.fromFileSync(path.join(__dirname, 'meta.spec.md'))
+const tests = ['../README.md', 'meta.spec.md']
+  .reduce((tests, file) => {
+    return tests.concat(
+      blocks.fromFileSync(path.join(__dirname, file))
+    )
+  }, [])
   .filter(block => (
-    block.lang === 'js' && !block.info.skip
+    block.lang === 'js' &&
+    !block.info.skip &&
+    block.value.indexOf('test') > -1
   ))
   .map(block => {
     test(block.title, t => {
