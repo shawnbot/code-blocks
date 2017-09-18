@@ -1,5 +1,5 @@
 # code-blocks
-[![npm](https://img.shields.io/npm/v/code-blocks.svg)](https://npm.im/code-blocks) [![build status](https://img.shields.io/travis/shawbot/code-blocks.svg)](https://travis-ci.org/shawnbot/code-blocks)
+[![npm](https://img.shields.io/npm/v/code-blocks.svg)](https://npm.im/code-blocks) [![build status](https://travis-ci.org/shawnbot/code-blocks.svg?branch=master)](https://travis-ci.org/shawnbot/code-blocks)
 
 Parse [fenced code blocks] from [Markdown] with useful metadata.
 
