@@ -7,6 +7,22 @@ Parse [fenced code blocks] from [Markdown] with useful metadata.
 npm install [--save | --save-dev] code-blocks
 ```
 
+## Usage
+
+```js
+// ES5/CommonJS
+const codeBlocks = require('code-blocks')
+// ES2015/ES6/Babel, etc.
+import codeBlocks from 'code-blocks'
+
+codeBlocks.fromFile('README.md')
+  .then(blocks => {
+    // do stuff with blocks here
+  })
+```
+
+See the [API documentation](api.md) for more examples.
+
 ## How it works
 
 This library uses [remark] to parse Markdown into a [unist] tree, then finds
@@ -81,34 +97,6 @@ block parsed gets a title according to the following algorithm:
    which the code block starts.
 
 
-## API
-
-### `fromFile(filename[, options])`
-
-Read a file asynchronously and parse all of the code blocks from it. Paths are
-relative to the current working directory (`process.cwd()`) unless they're
-specified absolutely. `fromFile()` returns a [Promise] that resolves to an
-array of code block objects:
-
-```js
-const codeBlocks = require('code-blocks')
-codeBlocks.fromFile('README.md')
-  .then(blocks => {
-    // do stuff with the blocks here
-  })
-```
-
-### `fromFileSync(filename[, options])`
-
-This is the synchronous version of [`fromFile()`]:
-
-```js
-const codeBlocks = require('code-blocks')
-const blocks = codeBlocks.fromFileSync('README.md')
-// do stuff with the blocks here
-```
-
-[abstract syntax tree]: https://en.wikipedia.org/wiki/Abstract_syntax_tree
 [fenced code blocks]: http://spec.commonmark.org/0.12/#fenced-code-blocks
 [markdown]: https://en.wikipedia.org/wiki/Markdown
 [unist]: https://unifiedjs.github.io/#syntax-tree
