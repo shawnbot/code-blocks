@@ -78,8 +78,7 @@ block parsed gets a title according to the following algorithm:
 
    Where `{n}` is the 1-based index of the code block in the parsed file,
    `{filename}` is the parsed file (or `buffer`), and `{line}` is the line at
-   which the code block starts. You can customize the format of this title with
-   the [`title` option](#title)
+   which the code block starts.
 
 
 ## API
