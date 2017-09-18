@@ -1,6 +1,6 @@
 {
   "name": "code-blocks",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Parse fenced code blocks from markdown with useful metadata",
   "main": "index.js",
   "dependencies": {
