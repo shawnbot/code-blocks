@@ -25,3 +25,4 @@ const blocks = codeBlocks.fromFileSync('README.md')
 // do stuff with the blocks here
 ```
 
+[promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
