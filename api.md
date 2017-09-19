@@ -17,7 +17,7 @@ codeBlocks.fromFile('README.md')
 
 ## `fromFileSync(filename[, options])`
 
-This is the synchronous version of [`fromFile()`]:
+This is the synchronous version of `fromFile()`, and works as you'd expect:
 
 ```js
 const codeBlocks = require('code-blocks')
