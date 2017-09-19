@@ -18,13 +18,13 @@ const tests = ['../README.md', '../api.md', 'meta.spec.md']
       const script = new vm.Script(block.value, {
         filename: block.source.file,
         lineOffset: block.source.line,
-        displayErrors: true
+        displayErrors: true,
       })
       const context = vm.createContext({
         __dirname,
         block,
         blocks,
-        test: t
+        test: t,
       })
       const result = script.runInContext(context)
       if (result instanceof Promise) {

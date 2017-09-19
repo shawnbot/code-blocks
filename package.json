@@ -21,8 +21,10 @@
     "prettier": "prettier --write **/*.js"
   },
   "prettier": {
+    "bracket-spacing": false,
     "semi": false,
-    "single-quote": true
+    "single-quote": true,
+    "trailing-comma": "es5"
   },
   "keywords": [
     "code",

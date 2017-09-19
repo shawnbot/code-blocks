@@ -46,17 +46,17 @@ test('it can parse key/value pairs in fenced code blocks', t => {
 
     const js = b[0]
     t.is(js.lang, 'js')
-    t.deepEqual(js.info, { title: 'JavaScript' })
+    t.deepEqual(js.info, {title: 'JavaScript'})
     t.deepEqual(js.title, 'JavaScript')
 
     const html = b[1]
     t.is(html.lang, 'html')
-    t.deepEqual(html.info, { title: 'This is HTML' })
+    t.deepEqual(html.info, {title: 'This is HTML'})
     t.deepEqual(html.title, 'This is HTML')
 
     const ruby = b[2]
     t.is(ruby.lang, 'ruby')
-    t.deepEqual(ruby.info, { x: '1', y: '2', z: 'foo bar' })
+    t.deepEqual(ruby.info, {x: '1', y: '2', z: 'foo bar'})
   })
 })
 
