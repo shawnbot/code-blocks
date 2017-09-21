@@ -3,6 +3,7 @@
   "version": "0.0.8",
   "description": "Parse fenced code blocks from markdown with useful metadata",
   "main": "index.js",
+  "browser": "build/browser.js",
   "dependencies": {
     "fs-extra": "^4.0.2",
     "parse-pairs": "^0.2.2",
@@ -13,12 +14,16 @@
   },
   "devDependencies": {
     "ava": "^0.22.0",
-    "prettier": "^1.7.0"
+    "npm-run-all": "^4.1.1",
+    "prettier": "^1.7.0",
+    "webpack": "^3.6.0"
   },
   "scripts": {
+    "build": "mkdir -p build; webpack browser.js build/browser.js",
     "test": "ava --verbose test/*.js",
     "watch": "ava --verbose --watch test/*.js",
-    "prettier": "prettier --write **/*.js"
+    "prettier": "prettier --write **/*.js",
+    "preversion": "npm-run-all -s prettier test build"
   },
   "prettier": {
     "bracket-spacing": false,
