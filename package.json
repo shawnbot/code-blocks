@@ -23,7 +23,8 @@
     "test": "ava --verbose test/*.js",
     "watch": "ava --verbose --watch test/*.js",
     "prettier": "prettier --write **/*.js",
-    "preversion": "npm-run-all -s prettier test build"
+    "preversion": "npm-run-all --serial prettier test",
+    "prepublish": "npm run -q build"
   },
   "prettier": {
     "bracket-spacing": false,
